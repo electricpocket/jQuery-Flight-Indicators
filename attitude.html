@@ -47,17 +47,18 @@ https://github.com/sebmatton/jQuery-Flight-Indicators
 var attitude = $.flightIndicator('#attitude', 'attitude', {roll:50, pitch:-20, size:200, showBox : true});
 
 
-// Update at 20Hz
+// Update at 1Hz
 var increment = 0;
 setInterval(function() {
   
     // Attitude update
-    attitude.setRoll(30*Math.sin(increment/10));
-    attitude.setPitch(50*Math.sin(increment/20));
-
-    increment++;
+    $.getJSON( "http://localhost/sensors/attitude.json", function( json ) {
+    attitude.setRoll(json.roll);
+    attitude.setPitch(json.pitch);
+});
+    
  
-}, 50);
+}, 1000);
 </script>
 </body>
 </html>
