@@ -52,7 +52,7 @@ var increment = 0;
 setInterval(function() {
   
     // Attitude update
-    $.getJSON( "http://localhost/sensors/attitude.json", function( json ) {
+    $.getJSON( "../../sensors/attitude.json", function( json ) {
     attitude.setRoll(json.roll);
     attitude.setPitch(json.pitch);
 });
