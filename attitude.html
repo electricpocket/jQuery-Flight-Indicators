@@ -1,0 +1,63 @@
+<!-- 
+
+jQuery Flight Indicators plugin
+By Sébastien Matton (seb_matton@hotmail.com)
+Published under GPLv3 License.
+
+https://github.com/sebmatton/jQuery-Flight-Indicators
+ 
+ -->
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="utf-8">
+    <!-- Syntax coloration -->
+    <link rel="stylesheet" type="text/css" href="_examples_data/prism/prism.css" />
+    <!-- This page style -->
+    <link rel="stylesheet" type="text/css" href="_examples_data/style.css" />
+    <!-- Flight Indicators library styles -->
+    <link rel="stylesheet" type="text/css" href="css/flightindicators.css" />
+    <title>jQuery Flight Indicators Plugin</title>
+</head>
+<body>
+<div class="container">
+   
+    <div class="examples">
+        <!-- The block where we want to place an indicator -->
+        <span id="attitude"></span>
+    </div>
+
+ 
+</div>
+
+
+
+<!-- Syntax color -->
+<script src="_examples_data/prism/prism.js"></script>
+
+<!-- Importing jQuery library -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+
+<!-- Importing the FlightIndicators library -->
+<script src="js/jquery.flightindicators.js"></script>
+
+<!-- Let start our scripts -->
+<script type="text/javascript">
+
+
+var attitude = $.flightIndicator('#attitude', 'attitude', {roll:50, pitch:-20, size:200, showBox : true});
+
+
+// Update at 20Hz
+var increment = 0;
+setInterval(function() {
+  
+    // Attitude update
+    attitude.setRoll(30*Math.sin(increment/10));
+    attitude.setPitch(50*Math.sin(increment/20));
+
+    increment++;
+ 
+}, 50);
+</script>
+</body>
+</html>
